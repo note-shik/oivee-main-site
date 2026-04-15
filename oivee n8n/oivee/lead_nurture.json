@@ -1,0 +1,243 @@
+{
+  "name": "Oivee — Lead Nurture Sequence",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "minutes", "minutesInterval": 5 }]
+        }
+      },
+      "id": "trigger-1",
+      "name": "Every 5 Minutes",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "nurture_sent",
+              "condition": "eq",
+              "keyValue": false
+            }
+          ]
+        }
+      },
+      "id": "supabase-get",
+      "name": "Get Un-nurtured Leads",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "credentials": {
+        "supabaseApi": {
+          "id": "SUPABASE_CREDENTIAL_ID",
+          "name": "Oivee Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "split-1",
+      "name": "One Lead at a Time",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "minutes"
+      },
+      "id": "wait-1",
+      "name": "Wait 5 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "crimsonleafwind@gmail.com",
+        "toEmail": "={{ $json.email }}",
+        "subject": "=Quick question about your brand, {{ ($json.name || '').split(' ')[0] }}",
+        "emailType": "html",
+        "html": "=<div style=\"font-family: 'DM Sans', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0A; color: #F5F5F0; padding: 32px; border: 1px solid rgba(201,168,76,0.2); border-radius: 4px;\">\n  <div style=\"text-align: center; margin-bottom: 32px;\">\n    <h1 style=\"font-family: 'Times New Roman', serif; color: #C9A84C; margin: 0; font-size: 28px;\">Oivee</h1>\n  </div>\n  <p style=\"font-size: 16px;\">Hey {{ ($json.name || '').split(' ')[0] }},</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">I wanted to personally follow up on your inquiry. Before we jump on a call, I'd love to understand one thing:</p>\n  <div style=\"background: #141414; border-left: 3px solid #C9A84C; padding: 16px 20px; margin: 24px 0; border-radius: 0 4px 4px 0;\">\n    <p style=\"color: #E8D5A3; font-style: italic; margin: 0; font-size: 16px;\">What's the single biggest thing holding your brand back from growing right now?</p>\n  </div>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">Is it visibility? Leads? Conversions? A brand that doesn't reflect where you're headed?</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">Hit reply and tell me — even one sentence helps us prepare a more useful strategy call for you.</p>\n  <p style=\"margin-top: 24px;\">— Team Oivee</p>\n  <div style=\"margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.15); text-align: center; font-size: 12px; color: #6B6B6B;\">\n    Oivee — We make brands impossible to ignore.<br/><a href=\"https://oivee.com\" style=\"color: #C9A84C; text-decoration: none;\">oivee.com</a>\n  </div>\n</div>",
+        "options": {}
+      },
+      "id": "email-1",
+      "name": "Email 1: Personal Follow-Up",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1120, 300],
+      "credentials": {
+        "smtp": {
+          "id": "SMTP_CREDENTIAL_ID",
+          "name": "Oivee SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "days"
+      },
+      "id": "wait-2",
+      "name": "Wait 1 Day",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "crimsonleafwind@gmail.com",
+        "toEmail": "={{ $json.email }}",
+        "subject": "The #1 mistake brands make with digital marketing",
+        "emailType": "html",
+        "html": "=<div style=\"font-family: 'DM Sans', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0A; color: #F5F5F0; padding: 32px; border: 1px solid rgba(201,168,76,0.2); border-radius: 4px;\">\n  <div style=\"text-align: center; margin-bottom: 32px;\">\n    <h1 style=\"font-family: 'Times New Roman', serif; color: #C9A84C; margin: 0; font-size: 28px;\">Oivee</h1>\n  </div>\n  <p style=\"font-size: 16px;\">Hey {{ ($json.name || '').split(' ')[0] }},</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">After working with 50+ brands, we see the same pattern every time:</p>\n  <div style=\"background: #141414; border: 1px solid rgba(201,168,76,0.15); padding: 24px; margin: 24px 0; border-radius: 4px;\">\n    <p style=\"color: #F5F5F0; font-size: 18px; font-family: 'Times New Roman', serif; margin: 0 0 12px 0;\">They do everything, everywhere, all at once.</p>\n    <p style=\"color: #A0A0A0; margin: 0; line-height: 1.7;\">Posting on 5 platforms. Running ads without a funnel. Redesigning the logo every 6 months. The result? Burnt budget, zero compounding, and a brand that looks different on every channel.</p>\n  </div>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\"><strong style=\"color: #F5F5F0;\">What works instead:</strong> Pick one channel. Nail the positioning. Build a system that compounds. Then expand.</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">That's exactly what we do at Oivee. We don't scatter your budget — we concentrate it where the math works.</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">Here's a real example: we took a D2C brand from 1.8x ROAS to <strong style=\"color: #C9A84C;\">5.2x ROAS</strong> in one month — by cutting 3 ad channels and doubling down on 1.</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">Tomorrow, I'll share the exact case study.</p>\n  <p style=\"margin-top: 24px;\">— Team Oivee</p>\n  <div style=\"margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.15); text-align: center; font-size: 12px; color: #6B6B6B;\">\n    Oivee — We make brands impossible to ignore.<br/><a href=\"https://oivee.com\" style=\"color: #C9A84C; text-decoration: none;\">oivee.com</a>\n  </div>\n</div>",
+        "options": {}
+      },
+      "id": "email-2",
+      "name": "Email 2: Value — Common Mistake",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1560, 300],
+      "credentials": {
+        "smtp": {
+          "id": "SMTP_CREDENTIAL_ID",
+          "name": "Oivee SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "days"
+      },
+      "id": "wait-3",
+      "name": "Wait 2 Days",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1780, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "crimsonleafwind@gmail.com",
+        "toEmail": "={{ $json.email }}",
+        "subject": "How FreshBrew hit 5.2x ROAS (case study inside)",
+        "emailType": "html",
+        "html": "=<div style=\"font-family: 'DM Sans', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0A; color: #F5F5F0; padding: 32px; border: 1px solid rgba(201,168,76,0.2); border-radius: 4px;\">\n  <div style=\"text-align: center; margin-bottom: 32px;\">\n    <h1 style=\"font-family: 'Times New Roman', serif; color: #C9A84C; margin: 0; font-size: 28px;\">Oivee</h1>\n  </div>\n  <p style=\"font-size: 16px;\">Hey {{ ($json.name || '').split(' ')[0] }},</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">As promised — here's the case study.</p>\n  <div style=\"background: #141414; border: 1px solid rgba(201,168,76,0.15); padding: 24px; margin: 24px 0; border-radius: 4px;\">\n    <p style=\"color: #C9A84C; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 8px 0;\">Case Study: FreshBrew</p>\n    <p style=\"color: #F5F5F0; font-size: 20px; font-family: 'Times New Roman', serif; margin: 0 0 16px 0;\">From 1.8x to 5.2x ROAS in 30 Days</p>\n    <p style=\"color: #A0A0A0; line-height: 1.7; margin: 0 0 16px 0;\">FreshBrew was a D2C coffee brand spending across Meta, Google, Pinterest, and influencers. Results were flat. We consolidated to Meta-only, rebuilt their creative strategy around UGC-style reels, and built a proper retargeting funnel.</p>\n    <table style=\"width: 100%; margin-top: 16px;\">\n      <tr>\n        <td style=\"text-align: center; padding: 12px;\">\n          <p style=\"color: #C9A84C; font-size: 24px; font-weight: 700; margin: 0;\">5.2x</p>\n          <p style=\"color: #6B6B6B; font-size: 11px; margin: 4px 0 0;\">ROAS</p>\n        </td>\n        <td style=\"text-align: center; padding: 12px; border-left: 1px solid rgba(201,168,76,0.15); border-right: 1px solid rgba(201,168,76,0.15);\">\n          <p style=\"color: #C9A84C; font-size: 24px; font-weight: 700; margin: 0;\">+340%</p>\n          <p style=\"color: #6B6B6B; font-size: 11px; margin: 4px 0 0;\">Brand Recall</p>\n        </td>\n        <td style=\"text-align: center; padding: 12px;\">\n          <p style=\"color: #C9A84C; font-size: 24px; font-weight: 700; margin: 0;\">12L+</p>\n          <p style=\"color: #6B6B6B; font-size: 11px; margin: 4px 0 0;\">Monthly Revenue</p>\n        </td>\n      </tr>\n    </table>\n  </div>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">This is what happens when you stop doing everything and start doing the right thing.</p>\n  <p style=\"color: #A0A0A0; line-height: 1.7;\">Want to see what a focused strategy could do for <strong style=\"color: #F5F5F0;\">{{ $json.business_name || 'your brand' }}</strong>?</p>\n  <div style=\"text-align: center; margin: 32px 0;\">\n    <a href=\"https://oivee.com/contact\" style=\"display: inline-block; background: #C9A84C; color: #0A0A0A; padding: 14px 32px; text-decoration: none; font-weight: 600; border-radius: 2px; font-size: 14px;\">Book Your Free Strategy Call</a>\n  </div>\n  <p style=\"color: #6B6B6B; font-size: 13px; text-align: center;\">15 minutes. No fluff. Just an honest look at what would work for you.</p>\n  <p style=\"margin-top: 24px;\">— Team Oivee</p>\n  <div style=\"margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(201,168,76,0.15); text-align: center; font-size: 12px; color: #6B6B6B;\">\n    Oivee — We make brands impossible to ignore.<br/><a href=\"https://oivee.com\" style=\"color: #C9A84C; text-decoration: none;\">oivee.com</a><br/><br/>\n    <a href=\"#\" style=\"color: #6B6B6B; text-decoration: underline; font-size: 11px;\">Unsubscribe</a>\n  </div>\n</div>",
+        "options": {}
+      },
+      "id": "email-3",
+      "name": "Email 3: Case Study + CTA",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [2000, 300],
+      "credentials": {
+        "smtp": {
+          "id": "SMTP_CREDENTIAL_ID",
+          "name": "Oivee SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "eq",
+              "keyValue": "={{ $json.id }}"
+            }
+          ]
+        },
+        "dataToSend": "defineBelow",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "nurture_sent",
+              "fieldValue": true
+            }
+          ]
+        }
+      },
+      "id": "supabase-update",
+      "name": "Mark Nurture Complete",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [2220, 300],
+      "credentials": {
+        "supabaseApi": {
+          "id": "SUPABASE_CREDENTIAL_ID",
+          "name": "Oivee Supabase"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every 5 Minutes": {
+      "main": [
+        [{ "node": "Get Un-nurtured Leads", "type": "main", "index": 0 }]
+      ]
+    },
+    "Get Un-nurtured Leads": {
+      "main": [
+        [{ "node": "One Lead at a Time", "type": "main", "index": 0 }]
+      ]
+    },
+    "One Lead at a Time": {
+      "main": [
+        [{ "node": "Wait 5 Minutes", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "Wait 5 Minutes": {
+      "main": [
+        [{ "node": "Email 1: Personal Follow-Up", "type": "main", "index": 0 }]
+      ]
+    },
+    "Email 1: Personal Follow-Up": {
+      "main": [
+        [{ "node": "Wait 1 Day", "type": "main", "index": 0 }]
+      ]
+    },
+    "Wait 1 Day": {
+      "main": [
+        [{ "node": "Email 2: Value — Common Mistake", "type": "main", "index": 0 }]
+      ]
+    },
+    "Email 2: Value — Common Mistake": {
+      "main": [
+        [{ "node": "Wait 2 Days", "type": "main", "index": 0 }]
+      ]
+    },
+    "Wait 2 Days": {
+      "main": [
+        [{ "node": "Email 3: Case Study + CTA", "type": "main", "index": 0 }]
+      ]
+    },
+    "Email 3: Case Study + CTA": {
+      "main": [
+        [{ "node": "Mark Nurture Complete", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    { "name": "oivee" },
+    { "name": "nurture" },
+    { "name": "production" }
+  ]
+}
