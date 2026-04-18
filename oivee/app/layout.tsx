@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     title: `${SITE.name} | We Make Brands Impossible to Ignore`,
     description: SITE.description,
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 }
 
 export default function RootLayout({
