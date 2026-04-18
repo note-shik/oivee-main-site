@@ -8,47 +8,38 @@ import PricingSection from '@/components/home/PricingSection'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
 
-// Funnel order: hook → proof → services → process → trust → pricing → CTA
+// Flow: hook → services (what) → proof (did it work?) → process → why us → testimonials → engagements → CTA
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hook */}
       <Hero />
 
-      {/* 2. Proof — results before pitch */}
-      <CaseStudyPreview />
-      <Testimonials />
-
-      {/* 3. Mid-page CTA while trust is high */}
-      <SectionWrapper>
-        <SectionCTA
-          heading="Ready to stop blending in?"
-          subtext="Book a free strategy call and we'll show you exactly how to grow."
-          ctaLabel="Get Free Audit"
-          ctaHref="/contact"
-          variant="gold"
-        />
-      </SectionWrapper>
-
-      {/* 4. What we do */}
+      {/* What we do — answer the implicit first question */}
       <ServicesGrid />
 
-      {/* 5. How we work */}
+      {/* Proof — numbers speak louder than adjectives */}
+      <CaseStudyPreview />
+
+      {/* Process — reduce the "how does this actually work?" friction */}
       <ProcessSection />
 
-      {/* 6. Why us */}
+      {/* Why us — differentiation before testimonials seals it */}
       <WhyOivee />
 
-      {/* 7. Pricing */}
+      {/* Third-party validation */}
+      <Testimonials />
+
+      {/* Engagements — commercial next step */}
       <PricingSection />
 
-      {/* 8. Final CTA */}
+      {/* Final close */}
       <SectionWrapper>
         <SectionCTA
-          heading="Let's build something impossible to ignore."
-          subtext="Your brand deserves better than average. Let's make it happen."
-          ctaLabel="Start Growing"
+          heading="Let's build a brand that compounds."
+          subtext="Most of our partnerships start with a 30-minute strategy call. No slides, no pitch — just a clear read on whether we can help."
+          ctaLabel="Book a Strategy Call"
           ctaHref="/contact"
+          variant="gold"
         />
       </SectionWrapper>
     </>

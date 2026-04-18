@@ -8,10 +8,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Oivee is a premium digital growth agency built for founders and brands that refuse to blend in. Strategy-first. Results-obsessed.',
+    'Oivee is a digital growth studio built by operators, for founders. Strategy, creative, and media under one roof — accountable to revenue, not vanity metrics.',
   openGraph: {
-    title: 'About | Oivee',
-    description: 'Strategy-first. Results-obsessed. Built for founders who care.',
+    title: 'About · Oivee',
+    description: 'A digital growth studio built by operators, for founders.',
   },
 }
 
@@ -22,16 +22,16 @@ export default function AboutPage() {
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <ScrollReveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-brand-primary">
               About Oivee
             </p>
-            <h1 className="mt-3 text-4xl font-bold md:text-5xl lg:text-6xl">
+            <h1 className="mt-4 text-4xl font-bold leading-[1.05] md:text-5xl lg:text-6xl">
               We exist to make brands{' '}
-              <span className="text-gold-gradient">impossible to ignore.</span>
+              <span className="text-gold-gradient italic">impossible</span> to ignore.
             </h1>
-            <p className="mt-6 text-lg text-brand-textMuted" style={{ lineHeight: '1.7' }}>
-              Oivee was built on a simple belief: most brands don&apos;t have a visibility
-              problem — they have a strategy problem. We fix that.
+            <p className="mt-7 text-lg leading-[1.6] text-brand-textMuted">
+              Most brands don&apos;t have a visibility problem. They have a strategy problem,
+              a coordination problem, and a feedback-loop problem. We fix all three.
             </p>
           </div>
         </ScrollReveal>
@@ -105,10 +105,10 @@ export default function AboutPage() {
       <SectionWrapper className="bg-brand-surface">
         <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { value: '50+', label: 'Brands Scaled' },
-            { value: '4.8x', label: 'Avg. ROAS' },
-            { value: '3M+', label: 'Reach Generated' },
-            { value: '95%', label: 'Client Retention' },
+            { value: '50+', label: 'Brands scaled' },
+            { value: '4.8×', label: 'Avg. ROAS' },
+            { value: '3M+', label: 'Reach generated' },
+            { value: '95%', label: 'Client retention' },
           ].map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 100}>
               <div className="rounded-sm border border-brand-border bg-brand-bg p-8">
@@ -123,9 +123,9 @@ export default function AboutPage() {
       {/* CTA */}
       <SectionWrapper>
         <SectionCTA
-          heading="Ready to work with a team that gets it?"
-          subtext="Let's talk about what growth looks like for your brand."
-          ctaLabel="Get in Touch"
+          heading="Want to see if we're a fit?"
+          subtext="Thirty minutes. No pitch. We'll tell you where your growth levers are — and whether we're the right team to move them."
+          ctaLabel="Book a Strategy Call"
           ctaHref="/contact"
           variant="gold"
         />

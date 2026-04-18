@@ -11,17 +11,17 @@ export default function CaseStudyPreview() {
   return (
     <SectionWrapper className="bg-brand-surface" grain>
       <ScrollReveal>
-        <div className="mb-16 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
-              Case Studies
+        <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-xl">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-brand-primary">
+              Selected work
             </p>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl lg:text-5xl">
-              Results that speak.
+            <h2 className="mt-4 text-3xl font-bold leading-[1.05] md:text-4xl lg:text-[2.75rem]">
+              Numbers that outlast the pitch deck.
             </h2>
           </div>
           <Button href="/case-studies" variant="secondary" size="sm" trackingEvent="case_study_view_all">
-            View All
+            See all case studies
           </Button>
         </div>
       </ScrollReveal>

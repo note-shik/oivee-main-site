@@ -41,15 +41,16 @@ export default function ServicesGrid() {
     <SectionWrapper id="services" className="bg-brand-surface" grain>
       <ScrollReveal>
         <div className="mb-16 max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
-            What We Do
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-brand-primary">
+            What we do
           </p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl lg:text-5xl">
+          <h2 className="mt-4 text-3xl font-bold leading-[1.05] md:text-4xl lg:text-[2.75rem]">
             Full-stack growth.{' '}
-            <span className="text-brand-textMuted">Zero gaps.</span>
+            <span className="text-brand-textMuted">Zero gaps between strategy and shipping.</span>
           </h2>
-          <p className="mt-4 text-brand-textMuted" style={{ lineHeight: '1.7' }}>
-            Every service is designed to work together — so your brand grows faster, looks sharper, and converts harder.
+          <p className="mt-5 text-brand-textMuted">
+            Pick the discipline — or let us run the whole system. Either way, the work is built by
+            the same senior team that pitched it.
           </p>
         </div>
       </ScrollReveal>

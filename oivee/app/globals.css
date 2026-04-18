@@ -7,58 +7,33 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     @apply bg-brand-bg text-brand-text font-body;
-    line-height: 1.7;
+    line-height: 1.65;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
+    letter-spacing: -0.025em;
+    line-height: 1.06;
   }
 
   ::selection {
-    background: rgba(212, 175, 55, 0.25);
-    color: #E8EAED;
-  }
-}
-
-/* ── Custom Cursor ── */
-.cursor,
-.cursor-ring {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
+    background: rgba(201, 168, 76, 0.28);
+    color: #FFF4D4;
   }
 
-  .cursor {
-    display: block;
-    width: 10px;
-    height: 10px;
-    background: #6C8CFF;
-    border-radius: 50%;
-    transition: transform 0.15s ease, opacity 0.3s ease;
-  }
-
-  .cursor-ring {
-    display: block;
-    width: 38px;
-    height: 38px;
-    border: 1px solid rgba(108, 140, 255, 0.4);
-    border-radius: 50%;
-    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -71,7 +46,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
     background-repeat: repeat;
     pointer-events: none;
     z-index: 1;
@@ -79,39 +54,37 @@
 
   .grid-overlay {
     background-image:
-      linear-gradient(rgba(212, 175, 55, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(212, 175, 55, 0.025) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(rgba(201, 168, 76, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.022) 1px, transparent 1px);
+    background-size: 72px 72px;
   }
 
   .text-gold-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #D4AF37 0%, #EDD98A 50%, #D4AF37 100%);
+    background-image: linear-gradient(135deg, #C9A84C 0%, #E5C76B 50%, #C9A84C 100%);
   }
 
   .border-gold-subtle {
-    border-color: rgba(212, 175, 55, 0.15);
+    border-color: rgba(201, 168, 76, 0.15);
   }
 
-  .hover-gold-border {
-    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .hover-gold-border:hover {
-    border-color: rgba(212, 175, 55, 0.35);
+  .hairline-gold {
+    background-image: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.4) 50%, transparent 100%);
+    height: 1px;
   }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F1115;
+  background: #0B0B0C;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232734;
-  border-radius: 3px;
+  background: #1F1F23;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37;
+  background: #C9A84C;
 }

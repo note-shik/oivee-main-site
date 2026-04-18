@@ -9,16 +9,16 @@ export default function WhyOivee() {
         {/* Left — heading */}
         <ScrollReveal direction="right">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-brand-primary">
               Why Oivee
             </p>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl font-bold leading-[1.05] md:text-4xl lg:text-[2.75rem]">
               Not another agency.{' '}
-              <span className="text-brand-textMuted">Your growth partner.</span>
+              <span className="text-brand-textMuted">A partner on the cap table of your growth.</span>
             </h2>
-            <p className="mt-6 text-brand-textMuted" style={{ lineHeight: '1.7' }}>
-              Most agencies sell deliverables. We sell outcomes. Every engagement is built
-              around one goal: making your brand the one people notice, trust, and choose.
+            <p className="mt-6 text-brand-textMuted">
+              Agencies sell deliverables. We sell a system — and stay close enough to the
+              numbers that you can hold us to them. Fewer clients, tighter work, real accountability.
             </p>
           </div>
         </ScrollReveal>

@@ -12,7 +12,7 @@ interface SectionCTAProps {
 export default function SectionCTA({
   heading,
   subtext,
-  ctaLabel = 'Start Growing',
+  ctaLabel = 'Book a Strategy Call',
   ctaHref = '/contact',
   variant = 'default',
 }: SectionCTAProps) {

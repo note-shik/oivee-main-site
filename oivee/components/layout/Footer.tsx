@@ -11,8 +11,12 @@ export default function Footer() {
             <Link href="/" className="font-heading text-2xl font-bold tracking-display">
               <span className="text-gold-gradient">{SITE.name}</span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm text-brand-textMuted leading-relaxed">
-              {SITE.tagline} Premium digital growth for brands that refuse to blend in.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-textMuted">
+              {SITE.tagline}
+            </p>
+            <p className="mt-3 max-w-xs text-xs leading-relaxed text-brand-textMuted/70">
+              Brand, content, and paid media — under one roof, for founders who want the
+              category to notice.
             </p>
           </div>
 
@@ -89,7 +93,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
           <p className="text-xs text-brand-textMuted/60">
-            Built with precision. Designed for growth.
+            Crafted in India. Obsessed everywhere.
           </p>
         </div>
       </div>

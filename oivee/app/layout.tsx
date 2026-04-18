@@ -4,7 +4,6 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
-import CustomCursor from '@/components/ui/CustomCursor'
 import { SITE } from '@/lib/content'
 
 const dmSans = DM_Sans({
@@ -17,25 +16,36 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} | Premium Digital Growth Agency`,
-    template: `%s | ${SITE.name}`,
+    default: `${SITE.name} — ${SITE.tagline}`,
+    template: `%s · ${SITE.name}`,
   },
   description: SITE.description,
-  keywords: [
-    'digital growth agency',
-    'social media management',
-    'paid ads agency',
-    'brand identity design',
-    'content creation agency',
-    'website development',
-    'SEO agency India',
-    'performance marketing',
-  ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
+    url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} | We Make Brands Impossible to Ignore`,
+    title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
 }
 
@@ -50,7 +60,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={dmSans.variable}>
       <head>
-        {/* Google Analytics placeholder */}
         {gaId && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
@@ -61,7 +70,6 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* Meta Pixel placeholder */}
         {pixelId && (
           <script
             dangerouslySetInnerHTML={{
@@ -75,7 +83,6 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <WhatsAppButton />
-        <CustomCursor />
       </body>
     </html>
   )

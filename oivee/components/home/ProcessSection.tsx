@@ -6,14 +6,17 @@ export default function ProcessSection() {
   return (
     <SectionWrapper gridOverlay>
       <ScrollReveal>
-        <div className="mb-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
-            Our Process
+        <div className="mb-16 max-w-2xl">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-brand-primary">
+            How we work
           </p>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl lg:text-5xl">
-            How we turn brands into{' '}
-            <span className="text-gold-gradient">growth machines.</span>
+          <h2 className="mt-4 text-3xl font-bold leading-[1.05] md:text-4xl lg:text-[2.75rem]">
+            A repeatable path from{' '}
+            <span className="text-gold-gradient italic">quiet</span> to compounding.
           </h2>
+          <p className="mt-5 text-brand-textMuted">
+            Same four phases, every engagement. We don&apos;t re-invent process — we re-invest it.
+          </p>
         </div>
       </ScrollReveal>
 

@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'Oivee',
-  tagline: 'We make brands impossible to ignore.',
+  tagline: 'Where brand meets performance.',
   description:
-    'Oivee is a premium digital growth agency that combines bold strategy with flawless execution. We help brands scale through social media, paid ads, content, and design.',
+    'A digital growth studio building brand, content, and ad systems for founders who want compounding results — not another vendor. Strategy, design, and paid media under one roof.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://oivee.com',
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919064982248',
   phone: process.env.NEXT_PUBLIC_PHONE_DISPLAY || '+91 90649 82248',
@@ -138,21 +138,21 @@ export const PROCESS_STEPS = [
 export const TESTIMONIALS = [
   {
     name: 'Arjun Mehta',
-    role: 'Founder, TechScale',
-    quote: 'Oivee transformed our online presence. Within 3 months, our leads tripled and our brand finally looked as premium as our product.',
-    avatar: 'AM',
+    role: 'Founder',
+    company: 'TechScale',
+    quote: 'Within 90 days our qualified leads tripled and the brand finally looked as serious as the product. Oivee is the rare agency that obsesses over both.',
   },
   {
     name: 'Priya Sharma',
-    role: 'CEO, StyleHive',
-    quote: 'Working with Oivee felt like adding a full growth team overnight. Their strategy, design, and execution are on another level.',
-    avatar: 'PS',
+    role: 'CEO',
+    company: 'StyleHive',
+    quote: 'We hired Oivee for social. Six months later they\'re running our content, paid, and brand — because the work compounded faster than anything we\'d seen.',
   },
   {
     name: 'Rohan Kapoor',
-    role: 'Co-founder, FreshBrew',
-    quote: 'Our Meta ads ROAS went from 1.8x to 5.2x in the first month. Oivee doesn\'t just run ads — they build systems.',
-    avatar: 'RK',
+    role: 'Co-founder',
+    company: 'FreshBrew',
+    quote: 'ROAS moved from 1.8x to 5.2x in the first month. They didn\'t just run better ads — they rebuilt the whole funnel around what actually converts.',
   },
 ] as const
 
@@ -205,20 +205,63 @@ export type CaseStudy = (typeof CASE_STUDIES)[number]
 
 export const WHY_OIVEE = [
   {
-    title: 'Strategy First, Always',
-    description: 'We don\'t start with tactics. Every engagement begins with deep research and a custom growth plan built for your specific goals.',
+    title: 'Strategy before tactics',
+    description: 'Every engagement opens with research and a custom plan. No templates, no recycled decks — just work built around your category and your goals.',
   },
   {
-    title: 'Obsessed with ROI',
-    description: 'Pretty design means nothing without results. Every pixel, every campaign, every piece of content is measured against real business outcomes.',
+    title: 'One room, one team',
+    description: 'Brand, content, and media under the same roof. Fewer handoffs, tighter feedback loops, creative that stays on-brand all the way to the ad account.',
   },
   {
-    title: 'Full-Stack Execution',
-    description: 'From brand identity to paid ads to website development — one team, one vision, zero gaps between strategy and execution.',
+    title: 'Measured against revenue',
+    description: 'Vanity metrics don\'t pay the bills. We tie every deliverable to pipeline, ROAS, or retention — and share the numbers every week.',
   },
   {
-    title: 'Built for Founders',
-    description: 'We work with people who care deeply about their brand. If you\'re building something that matters, we\'re the team that makes it impossible to ignore.',
+    title: 'Senior-led, always',
+    description: 'The people pitching you are the people running the work. No juniors ghost-writing strategy, no account manager between you and the team.',
+  },
+] as const
+
+export const ENGAGEMENT_TIERS = [
+  {
+    name: 'Foundations',
+    tagline: 'For brands finding their voice.',
+    description: 'Identity, messaging, and a launch-ready digital presence. Best for founders at pre-seed to seed stage building their first real story.',
+    includes: [
+      'Brand identity & style system',
+      'Website design + build (up to 6 pages)',
+      'Launch content kit (social + creative)',
+      '60-day activation support',
+    ],
+    commitment: 'One-time project · 6 weeks',
+    cta: 'Start the conversation',
+  },
+  {
+    name: 'Growth',
+    tagline: 'For brands ready to scale.',
+    description: 'A full growth system across content, paid media, and creative. Built for teams spending on ads but not yet compounding.',
+    includes: [
+      'Paid media (Meta + Google)',
+      'Content engine (social + reels)',
+      'Monthly creative sprints',
+      'Weekly reporting & strategy',
+    ],
+    commitment: 'Monthly retainer · 90-day minimum',
+    cta: 'Book strategy call',
+    highlight: true,
+  },
+  {
+    name: 'Category',
+    tagline: 'For brands built to lead.',
+    description: 'End-to-end partnership for companies competing for category leadership. Custom scope, senior team, and shared growth KPIs.',
+    includes: [
+      'Dedicated senior strategist',
+      'Full-funnel media + creative',
+      'Brand, web, and production',
+      'Executive reporting cadence',
+    ],
+    commitment: 'By application only',
+    cta: 'Apply to work with us',
   },
 ] as const
 

@@ -6,12 +6,12 @@ import SectionCTA from '@/components/ui/SectionCTA'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 
 export const metadata: Metadata = {
-  title: 'Case Studies',
+  title: 'Case studies',
   description:
-    'Real results for real brands. See how Oivee has helped businesses scale through strategy, design, and performance marketing.',
+    'Real brands, real numbers. A selection of engagements where Oivee moved the metric that actually mattered.',
   openGraph: {
-    title: 'Case Studies | Oivee',
-    description: 'Real results for real brands. See our work.',
+    title: 'Case studies · Oivee',
+    description: 'Real brands. Real numbers. Selected Oivee engagements.',
   },
 }
 
@@ -21,14 +21,15 @@ export default function CaseStudiesPage() {
       {/* Hero */}
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
-            Case Studies
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-brand-primary">
+            Selected work
           </p>
-          <h1 className="mt-3 text-4xl font-bold md:text-5xl lg:text-6xl">
-            Proof over promises.
+          <h1 className="mt-4 text-4xl font-bold leading-[1.05] md:text-5xl lg:text-6xl">
+            Proof, not promises.
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-brand-textMuted" style={{ lineHeight: '1.7' }}>
-            Every number here is real. Every brand here trusted us to deliver — and we did.
+          <p className="mt-7 max-w-xl text-lg leading-[1.6] text-brand-textMuted">
+            A few of the engagements we&apos;re proud of. Every number here is audited against
+            the client&apos;s own dashboards — we can share sources on request.
           </p>
         </div>
       </SectionWrapper>
@@ -102,9 +103,9 @@ export default function CaseStudiesPage() {
       {/* CTA */}
       <SectionWrapper>
         <SectionCTA
-          heading="Want results like these?"
-          subtext="Let's build a growth strategy tailored to your brand."
-          ctaLabel="Start Growing"
+          heading="Want numbers like these?"
+          subtext="Tell us where you're stuck. We'll tell you — honestly — if we can move it."
+          ctaLabel="Book a Strategy Call"
           ctaHref="/contact"
           variant="gold"
         />
