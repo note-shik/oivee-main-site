@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+
+   icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     url: SITE.url,
