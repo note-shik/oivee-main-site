@@ -1,9 +1,17 @@
 import { MetadataRoute } from 'next'
+import { CASE_STUDIES } from '@/lib/content'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oivee.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
+
+  const caseStudyUrls: MetadataRoute.Sitemap = CASE_STUDIES.map((cs) => ({
+    url: `${BASE_URL}/case-studies/${cs.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
 
   return [
     {
@@ -42,5 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.6,
     },
+    ...caseStudyUrls,
   ]
 }

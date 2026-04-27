@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la .env*)",
+      "Bash(grep -r \"NEXT_PUBLIC_EMAIL\" --include=\"*.env*\" --include=\"*.md\" --include=\"*.example\")",
+      "Bash(npx --no-install tsc --noEmit)"
+    ]
+  }
+}

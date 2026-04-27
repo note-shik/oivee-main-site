@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { leadSchema } from '@/lib/schemas'
 import { saveLeadToSupabase, isRecentDuplicate } from '@/lib/services/supabase'
 import { sendToN8N } from '@/lib/services/n8n'
+import { sendLeadNotification, sendLeadAutoReply } from '@/lib/services/email'
 import { checkRateLimit } from '@/lib/rateLimit'
 import { logger } from '@/lib/logger'
 
@@ -119,14 +120,29 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  // Secondary: n8n email notification (fire-and-forget — failure is logged, never blocks)
+  // Secondary: SMTP email — owner notification + auto-reply.
+  // We AWAIT (not fire-and-forget) because Vercel Functions freeze after the
+  // response is sent; background promises are not guaranteed to complete.
+  // Both calls have internal try/catch + logging, so one failing won't throw.
+  // Adds ~500-1500ms to response time — acceptable for a form submit.
+  const emailTasks: Promise<unknown>[] = [
+    sendLeadNotification(lead, userAgent, ip),
+    sendLeadAutoReply(lead),
+  ]
+
+  // Tertiary: legacy n8n webhook (kept for back-compat — set N8N_WEBHOOK_URL to re-enable)
   if (process.env.N8N_WEBHOOK_URL) {
-    sendToN8N(lead, userAgent, ip).catch((err) => {
-      logger.error('lead', 'n8n fire-and-forget threw', {
-        error: err instanceof Error ? err.message : String(err),
-      })
-    })
+    emailTasks.push(sendToN8N(lead, userAgent, ip))
   }
+
+  const results = await Promise.allSettled(emailTasks)
+  results.forEach((r, i) => {
+    if (r.status === 'rejected') {
+      logger.error('lead', `Notification task ${i} threw`, {
+        error: r.reason instanceof Error ? r.reason.message : String(r.reason),
+      })
+    }
+  })
 
   return NextResponse.json({ message: "We've received your enquiry and will be in touch shortly." })
 }

@@ -6,7 +6,7 @@ export const SITE = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://oivee.com',
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919064982248',
   phone: process.env.NEXT_PUBLIC_PHONE_DISPLAY || '+91 90649 82248',
-  email: process.env.NEXT_PUBLIC_EMAIL || 'clg.oishiksamanta@gmail.com',
+  email: process.env.NEXT_PUBLIC_EMAIL || 'support@oivee.com',
 } as const
 
 export const NAV_LINKS = [
@@ -26,7 +26,6 @@ export const SERVICES = [
     fullDescription:
       'We don\'t just post — we engineer social presence. From content calendars to community management, every piece is designed to position your brand as the one people follow, trust, and buy from.',
     icon: 'social',
-    image: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=900&q=80&auto=format&fit=crop',
     features: [
       'Platform-specific content strategy',
       'Daily posting & community management',
@@ -41,7 +40,6 @@ export const SERVICES = [
     fullDescription:
       'We build ad systems, not just campaigns. From creative testing to funnel optimization, every rupee is tracked and optimized for maximum return. Meta, Google, or both — we scale what works.',
     icon: 'ads',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop',
     features: [
       'Meta & Google Ads management',
       'Creative strategy & A/B testing',
@@ -56,7 +54,6 @@ export const SERVICES = [
     fullDescription:
       'Your brand is more than a logo. We build complete visual identities — logo, typography, color systems, brand guidelines — that make you look like the category leader from day one.',
     icon: 'brand',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80&auto=format&fit=crop',
     features: [
       'Logo & visual identity design',
       'Brand guidelines & style system',
@@ -71,7 +68,6 @@ export const SERVICES = [
     fullDescription:
       'Short-form video is the growth engine of modern brands. We concept, shoot, and edit reels and content that don\'t just get views — they convert viewers into customers.',
     icon: 'content',
-    image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&q=80&auto=format&fit=crop',
     features: [
       'Reels & short-form video production',
       'Content scripting & storyboarding',
@@ -86,7 +82,6 @@ export const SERVICES = [
     fullDescription:
       'We build websites that work as hard as your sales team. Fast, beautiful, conversion-optimized — every page is engineered to move visitors from interest to action.',
     icon: 'web',
-    image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=900&q=80&auto=format&fit=crop',
     features: [
       'Custom design & development',
       'Mobile-first responsive build',
@@ -101,7 +96,6 @@ export const SERVICES = [
     fullDescription:
       'SEO isn\'t a hack — it\'s infrastructure. We build the technical foundation, content strategy, and backlink authority that puts you on page one and keeps you there.',
     icon: 'growth',
-    image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=900&q=80&auto=format&fit=crop',
     features: [
       'Technical SEO audit & fixes',
       'Keyword research & content strategy',
@@ -163,7 +157,9 @@ export const CASE_STUDIES = [
     client: 'TechScale',
     industry: 'B2B SaaS',
     title: 'From Cold to 3x Leads in 90 Days',
-    summary: 'A complete digital overhaul — brand refresh, paid ads, and SEO — that tripled qualified leads in a single quarter.',
+    summary:
+      'A complete digital overhaul — brand refresh, paid ads, and SEO — that tripled qualified leads in a single quarter.',
+    duration: '90 days',
     metrics: [
       { label: 'Lead Increase', value: '312%' },
       { label: 'Cost Per Lead', value: '-48%' },
@@ -171,13 +167,31 @@ export const CASE_STUDIES = [
     ],
     services: ['Paid Ads', 'SEO', 'Brand Identity'],
     image: '/images/case_study_1.png',
+    challenge:
+      'TechScale had a strong product but a forgettable brand and an unpredictable lead engine. Demos were inconsistent, paid spend was leaking, and the sales team was prospecting cold most weeks. The mandate: make the pipeline predictable in one quarter without doubling the budget.',
+    approach: [
+      'Rebuilt the visual identity and messaging around a single category-defining promise.',
+      'Audited every Meta and Google campaign — killed bottom-quartile creative, doubled down on winners.',
+      'Launched 4 net-new landing pages, each tied to a single high-intent keyword cluster.',
+      'Set up a weekly creative sprint: 8 new ad variants tested per week, top 2 scaled.',
+    ],
+    outcome:
+      'Within 90 days qualified demos tripled and CPL dropped by nearly half. The brand refresh gave the sales team a story buyers remembered, and the new ad system made every rupee of spend traceable to pipeline.',
+    testimonial: {
+      quote:
+        'Within 90 days our qualified leads tripled and the brand finally looked as serious as the product. Oivee is the rare agency that obsesses over both.',
+      name: 'Arjun Mehta',
+      role: 'Founder, TechScale',
+    },
   },
   {
     slug: 'stylehive-social-growth',
     client: 'StyleHive',
     industry: 'Fashion & Lifestyle',
     title: 'Building a 50K Community from Scratch',
-    summary: 'Strategic content and reels that grew StyleHive from zero to 50,000 engaged followers — and a 6-figure revenue channel from social alone.',
+    summary:
+      'Strategic content and reels that grew StyleHive from zero to 50,000 engaged followers — and a 6-figure revenue channel from social alone.',
+    duration: '6 months',
     metrics: [
       { label: 'Followers', value: '50K+' },
       { label: 'Engagement Rate', value: '7.2%' },
@@ -185,20 +199,54 @@ export const CASE_STUDIES = [
     ],
     services: ['Social Media', 'Content Creation', 'Paid Ads'],
     image: '/images/case_study_2.png',
+    challenge:
+      'StyleHive was launching into a saturated D2C fashion market with a small team and no audience. They needed to build a recognizable voice, a content engine that could ship daily, and a path from follower to first purchase — fast.',
+    approach: [
+      'Defined a content pillar system: 4 pillars, 3 formats, one voice.',
+      'Set up an in-house reels production cadence — 5 reels/week, 2 photo posts.',
+      'Layered paid amplification on top-performing organic content rather than fresh ads.',
+      'Built a weekly engagement ritual: 30 minutes of founder-led DMs + comment replies.',
+    ],
+    outcome:
+      'Six months in, StyleHive crossed 50K engaged followers, hit a 7%+ engagement rate (4x category average), and generated ₹18L+ in revenue directly attributable to social. Three of the top five SKUs were launched with reels-first campaigns.',
+    testimonial: {
+      quote:
+        'We hired Oivee for social. Six months later they\'re running our content, paid, and brand — because the work compounded faster than anything we\'d seen.',
+      name: 'Priya Sharma',
+      role: 'CEO, StyleHive',
+    },
   },
   {
     slug: 'freshbrew-ecommerce',
     client: 'FreshBrew',
     industry: 'D2C / E-commerce',
     title: '5.2x ROAS and a Brand People Remember',
-    summary: 'End-to-end brand build plus performance marketing that turned FreshBrew into a recognizable D2C brand with profitable unit economics.',
+    summary:
+      'End-to-end brand build plus performance marketing that turned FreshBrew into a recognizable D2C brand with profitable unit economics.',
+    duration: '4 months',
     metrics: [
       { label: 'ROAS', value: '5.2x' },
       { label: 'Brand Recall', value: '+340%' },
       { label: 'Monthly Revenue', value: '₹12L+' },
     ],
     services: ['Brand Identity', 'Paid Ads', 'Website Development'],
-    image: 'https://placehold.co/800x500/141414/C9A84C?text=FreshBrew',
+    image: '/images/case_study_3.svg',
+    challenge:
+      'FreshBrew was burning ad spend at a 1.8x ROAS — under their break-even — and had a brand that buyers couldn\'t pick out of a lineup. The funnel was leaking at every step from ad to checkout.',
+    approach: [
+      'Rebuilt the brand identity, packaging direction, and tone-of-voice from scratch.',
+      'Re-architected the website around a single primary SKU and one high-converting bundle.',
+      'Switched ad strategy from product-led to story-led creatives (UGC + founder POV).',
+      'Implemented post-purchase upsells and a 7-email retention flow.',
+    ],
+    outcome:
+      'In the first month after relaunch, ROAS jumped from 1.8x to 5.2x. Brand recall in unaided surveys grew 3.4x. Monthly revenue crossed ₹12L with healthier unit economics than they\'d ever had.',
+    testimonial: {
+      quote:
+        'ROAS moved from 1.8x to 5.2x in the first month. They didn\'t just run better ads — they rebuilt the whole funnel around what actually converts.',
+      name: 'Rohan Kapoor',
+      role: 'Co-founder, FreshBrew',
+    },
   },
 ] as const
 
@@ -263,6 +311,41 @@ export const ENGAGEMENT_TIERS = [
     ],
     commitment: 'By application only',
     cta: 'Apply to work with us',
+  },
+] as const
+
+export const FAQS = [
+  {
+    q: 'How much does it cost to work with Oivee?',
+    a: 'Foundations projects typically start at ₹2.5–4 lakh for the full identity + launch-ready site. Growth retainers begin at ₹1.25 lakh/month with a 90-day minimum. Category engagements are scoped on application. Every quote is fixed-scope, in writing, before we start — no padded hourly billing.',
+  },
+  {
+    q: 'How fast can we get started?',
+    a: 'Most engagements kick off within 7–10 days of the first call. Discovery week happens immediately, strategy week follows, then execution begins by week three. If you need a faster start, tell us — we can usually accommodate.',
+  },
+  {
+    q: 'Do you work with brands outside India?',
+    a: 'Yes. Roughly a third of our clients are outside India — primarily UAE, UK, and Singapore. We invoice in INR, USD, GBP, or AED, and we run async by default so timezones rarely matter.',
+  },
+  {
+    q: 'Do you offer one-off projects, or only retainers?',
+    a: 'Both. Brand identity, websites, and audits are one-off projects with a clear deliverable. Paid media, content, and SEO are retainer-only — they compound, and one month tells you nothing.',
+  },
+  {
+    q: 'Who actually does the work?',
+    a: 'The senior team that pitched you. We don\'t hand off to junior account managers after signing. Your strategist, designer, and media lead are the same people from kickoff to scale — that\'s why we cap how many clients we take per quarter.',
+  },
+  {
+    q: 'What if it isn\'t working after the first 90 days?',
+    a: 'You leave, no questions asked. Retainers are 90-day minimums to give the work time to compound — but if the numbers don\'t move, that\'s on us. We\'ll exit cleanly and hand over assets.',
+  },
+  {
+    q: 'What don\'t you do?',
+    a: 'Influencer marketing as a standalone service, PR, traditional media (print/OOH/TV), and one-off social posts without a strategy attached. We\'re sharper when we run the full system — if you only want a single tactical deliverable, we\'ll usually point you to a better-fit partner.',
+  },
+  {
+    q: 'How do you measure success?',
+    a: 'Against the metric you actually care about — qualified pipeline, ROAS, MRR, or retention. We define the target in week one, share a dashboard you can open any time, and review numbers weekly. Vanity metrics (followers, impressions) are reported but never the goal.',
   },
 ] as const
 

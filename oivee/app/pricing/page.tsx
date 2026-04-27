@@ -4,6 +4,7 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import Button from '@/components/ui/Button'
+import FAQ from '@/components/ui/FAQ'
 
 export const metadata: Metadata = {
   title: 'Pricing & engagements',
@@ -95,6 +96,9 @@ export default function PricingPage() {
           smallest one.
         </p>
       </SectionWrapper>
+
+      {/* FAQ */}
+      <FAQ />
 
       {/* CTA */}
       <SectionWrapper>

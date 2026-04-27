@@ -40,7 +40,7 @@ export default function ServicesPage() {
         <div className="grid gap-8">
           {SERVICES.map((service, i) => (
             <ScrollReveal key={service.id} delay={i * 80}>
-              <ServiceCard service={service} />
+              <ServiceCard service={service} index={i} />
             </ScrollReveal>
           ))}
         </div>

@@ -31,11 +31,12 @@ There is no test suite. TypeScript type checking runs as part of `next build`.
 The contact form submits to `/api/lead` (route.ts), which validates with Zod, sanitizes, then:
 
 1. **Primary:** `saveLeadToSupabase()` → writes lead row to the `leads` table in Supabase (blocks — returns 500 on failure)
-2. **Secondary:** `sendToN8N()` → n8n webhook for email notifications only (fire-and-forget, non-blocking)
+2. **Secondary:** `sendLeadNotification()` + `sendLeadAutoReply()` via SMTP (`lib/services/email.ts`) — fire-and-forget, in parallel, non-blocking. One email to the owner, one auto-reply to the lead.
+3. **Tertiary (deprecated):** `sendToN8N()` — only fires if `N8N_WEBHOOK_URL` is set. Kept as a fallback while migration settles; disable by leaving the env var unset.
 
-Airtable has been removed entirely. n8n no longer needs to write data — its only job is triggering emails.
+Airtable has been removed entirely. n8n is no longer the email path — SMTP is. Any SMTP-compatible provider works (Gmail App Password, Resend, Brevo, etc.) by changing env vars only.
 
-**Known issue:** Rate limiting in `/api/lead` uses an in-memory `Map`. On Vercel serverless, each instance has its own map — the limit is ineffective across concurrent instances.
+**Rate limiting:** `/api/lead` uses Upstash Redis sliding-window via `lib/rateLimit.ts`. Falls back to allow-all if `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` are unset (dev-safe).
 
 ### Supabase `leads` table schema
 
@@ -83,7 +84,11 @@ See `.env.example` for the full list. Key server-side vars:
 |---|---|
 | `SUPABASE_URL` | Supabase project URL (`https://xxx.supabase.co`) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Service role key (server-only, never expose to client) |
-| `N8N_WEBHOOK_URL` | n8n webhook for email notifications (optional) |
+| `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS` | SMTP credentials for outbound email. Defaults assume Gmail (`smtp.gmail.com:587` + App Password). |
+| `SMTP_FROM` | Display "from" address (e.g. `"Oivee <support@oivee.com>"`) |
+| `OWNER_EMAIL` | Inbox to receive new-lead notifications |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | Rate-limit store (free Upstash tier). Optional — falls back to allow-all. |
+| `N8N_WEBHOOK_URL` | DEPRECATED — kept only as a fallback path. Leave unset on new setups. |
 
 `NEXT_PUBLIC_*` vars are injected into the client bundle. `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_META_PIXEL_ID` are optional — their script tags are only rendered when the vars are present.
 

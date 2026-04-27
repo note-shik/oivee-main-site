@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { CASE_STUDIES } from '@/lib/content'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
@@ -39,9 +40,10 @@ export default function CaseStudiesPage() {
         <div className="space-y-16">
           {CASE_STUDIES.map((cs, i) => (
             <ScrollReveal key={cs.slug} delay={i * 150}>
-            <div
+            <Link
+              href={`/case-studies/${cs.slug}`}
               id={cs.slug}
-              className="scroll-mt-24 overflow-hidden rounded-sm border border-brand-border bg-brand-bg"
+              className="group block scroll-mt-24 overflow-hidden rounded-sm border border-brand-border bg-brand-bg transition-colors hover:border-brand-primary/40"
             >
               <div className="grid md:grid-cols-2">
                 {/* Image */}
@@ -50,7 +52,7 @@ export default function CaseStudiesPage() {
                     src={cs.image}
                     alt={cs.client}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-brand-surface/80 md:bg-gradient-to-r" />
@@ -92,9 +94,13 @@ export default function CaseStudiesPage() {
                       </div>
                     ))}
                   </div>
+
+                  <p className="mt-8 text-sm font-semibold text-brand-primary opacity-80 transition-opacity group-hover:opacity-100">
+                    Read the full story →
+                  </p>
                 </div>
               </div>
-            </div>
+            </Link>
             </ScrollReveal>
           ))}
         </div>

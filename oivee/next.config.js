@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'placehold.co' },
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-    ],
+    // No remote patterns — all images are local in /public.
+    // Add a remotePatterns entry here if you ever load from a CDN/CMS.
+    remotePatterns: [],
   },
 }
 

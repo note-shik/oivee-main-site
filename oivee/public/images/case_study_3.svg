@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="FreshBrew case study">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1612" />
+      <stop offset="55%" stop-color="#141210" />
+      <stop offset="100%" stop-color="#0B0B0C" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.75" cy="0.25" r="0.7">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.32" />
+      <stop offset="55%" stop-color="#C9A84C" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="goldText" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C9A84C" />
+      <stop offset="50%" stop-color="#E5C76B" />
+      <stop offset="100%" stop-color="#C9A84C" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#C9A84C" stroke-opacity="0.06" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)" />
+  <rect width="800" height="500" fill="url(#grid)" />
+  <rect width="800" height="500" fill="url(#glow)" />
+
+  <g transform="translate(64, 80)">
+    <text x="0" y="0" font-family="'Times New Roman', serif" font-size="13" letter-spacing="3.5" fill="#C9A84C" font-weight="600" text-transform="uppercase">CASE STUDY · D2C</text>
+    <text x="0" y="80" font-family="'Times New Roman', serif" font-size="64" font-weight="700" fill="url(#goldText)">FreshBrew</text>
+    <text x="0" y="125" font-family="'DM Sans', system-ui, sans-serif" font-size="18" fill="#EDEDED" opacity="0.85">5.2× ROAS · 4-month brand build</text>
+  </g>
+
+  <g transform="translate(64, 340)">
+    <g>
+      <text x="0" y="0" font-family="'Times New Roman', serif" font-size="40" font-weight="700" fill="#C9A84C">5.2×</text>
+      <text x="0" y="22" font-family="'DM Sans', system-ui, sans-serif" font-size="11" fill="#8E8E93" letter-spacing="2">ROAS</text>
+    </g>
+    <g transform="translate(180, 0)">
+      <text x="0" y="0" font-family="'Times New Roman', serif" font-size="40" font-weight="700" fill="#C9A84C">+340%</text>
+      <text x="0" y="22" font-family="'DM Sans', system-ui, sans-serif" font-size="11" fill="#8E8E93" letter-spacing="2">BRAND RECALL</text>
+    </g>
+    <g transform="translate(420, 0)">
+      <text x="0" y="0" font-family="'Times New Roman', serif" font-size="40" font-weight="700" fill="#C9A84C">₹12L+</text>
+      <text x="0" y="22" font-family="'DM Sans', system-ui, sans-serif" font-size="11" fill="#8E8E93" letter-spacing="2">MONTHLY REVENUE</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="280" x2="736" y2="280" stroke="#C9A84C" stroke-opacity="0.18" stroke-width="1" />
+</svg>
