@@ -24,9 +24,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
 
-   icons: {
-    icon: '/favicon.svg',
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" }
+    ],
+    apple: "/apple-touch-icon.png",
   },
+
+  manifest: "/site.webmanifest",
+
   openGraph: {
     type: 'website',
     url: SITE.url,
