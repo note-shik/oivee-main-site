@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS, SITE } from '@/lib/content'
 import Button from '@/components/ui/Button'
+import Image from "next/image";
+
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -47,19 +49,23 @@ export default function Navbar() {
             const active = pathname === link.href
             return (
               <Link
-                key={link.href}
-                href={link.href}
-                className={`relative text-sm transition-colors duration-200 ${
-                  active
-                    ? 'text-brand-primary'
-                    : 'text-brand-textMuted hover:text-brand-text'
-                }`}
-              >
-                {link.label}
-                {active && (
-                  <span className="absolute -bottom-1.5 left-0 right-0 mx-auto h-px w-4 bg-brand-primary" />
-                )}
-              </Link>
+              href="/"
+              className="flex items-center gap-2 transition-opacity hover:opacity-80"
+              aria-label={`${SITE.name} home`}
+            >
+
+            <Image
+              src="/favicon.svg"
+              alt="Oivee logo"
+              width={28}
+              height={28}
+              priority
+            />
+
+            <span className="font-heading text-2xl font-bold tracking-display text-gold-gradient">
+              {SITE.name}
+            </span>
+          </Link>
             )
           })}
           <Button href="/contact" size="sm" trackingEvent="nav_cta_click">
