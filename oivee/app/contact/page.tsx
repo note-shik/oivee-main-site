@@ -4,11 +4,11 @@ import LeadForm from '@/components/ui/LeadForm'
 import { SITE } from '@/lib/content'
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Book a strategy call',
   description:
     'Book a strategy call with Oivee. Tell us what you\'re trying to grow — we\'ll come back within a business day with a clear read on whether we can help.',
   openGraph: {
-    title: 'Contact · Oivee',
+    title: 'Book a strategy call · Oivee',
     description: 'Book a strategy call. One business-day response, no pitch decks.',
   },
 }

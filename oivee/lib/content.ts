@@ -15,7 +15,6 @@ export const NAV_LINKS = [
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ] as const
 
 export const SERVICES = [
@@ -362,6 +361,5 @@ export const FOOTER_LINKS = {
     { label: 'About', href: '/about' },
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Contact', href: '/contact' },
   ],
 } as const
