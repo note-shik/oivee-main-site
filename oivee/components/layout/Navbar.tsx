@@ -37,10 +37,19 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
         <Link
           href="/"
-          className="font-heading text-2xl font-bold tracking-display transition-opacity hover:opacity-80"
+          className="flex items-center gap-2 transition-opacity hover:opacity-80"
           aria-label={`${SITE.name} home`}
         >
-          <span className="text-gold-gradient">{SITE.name}</span>
+          <Image
+            src="/favicon.svg"
+            alt=""
+            width={28}
+            height={28}
+            priority
+          />
+          <span className="font-heading text-2xl font-bold tracking-display text-gold-gradient">
+            {SITE.name}
+          </span>
         </Link>
 
         {/* Desktop */}
@@ -49,23 +58,16 @@ export default function Navbar() {
             const active = pathname === link.href
             return (
               <Link
-              href="/"
-              className="flex items-center gap-2 transition-opacity hover:opacity-80"
-              aria-label={`${SITE.name} home`}
-            >
-
-            <Image
-              src="/favicon.svg"
-              alt="Oivee logo"
-              width={28}
-              height={28}
-              priority
-            />
-
-            <span className="font-heading text-2xl font-bold tracking-display text-gold-gradient">
-              {SITE.name}
-            </span>
-          </Link>
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  active
+                    ? 'text-brand-primary'
+                    : 'text-brand-text hover:text-brand-primary'
+                }`}
+              >
+                {link.label}
+              </Link>
             )
           })}
           <Button href="/contact" size="sm" trackingEvent="nav_cta_click">

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { SITE, FOOTER_LINKS } from '@/lib/content'
 
 export default function Footer() {
@@ -8,7 +9,8 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="font-heading text-2xl font-bold tracking-display">
+            <Link href="/" className="flex items-center gap-2 font-heading text-2xl font-bold tracking-display">
+              <Image src="/favicon.svg" alt="" width={28} height={28} />
               <span className="text-gold-gradient">{SITE.name}</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-textMuted">

@@ -13,6 +13,7 @@ export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const
@@ -277,6 +278,7 @@ export const FOOTER_LINKS = {
   company: [
     { label: 'About', href: '/about' },
     { label: 'Case Studies', href: '/case-studies' },
+    { label: 'Pricing', href: '/pricing' },
     { label: 'Contact', href: '/contact' },
   ],
 } as const
