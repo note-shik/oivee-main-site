@@ -5,21 +5,37 @@ import SectionCTA from '@/components/ui/SectionCTA'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import Button from '@/components/ui/Button'
 import FAQ from '@/components/ui/FAQ'
+import {
+  breadcrumbSchema,
+  faqSchema,
+  jsonLdScriptProps,
+} from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Pricing & engagements',
+  title: 'Pricing & Engagement Models | Oivee Digital Marketing Agency',
   description:
-    'Three ways to work with Oivee — from launch-ready foundations to full category leadership. Transparent scope, senior team, no surprises.',
+    'Transparent pricing for digital marketing in India — Foundations from ₹2.5L, Growth retainers from ₹1.25L/month. Senior-led, fixed-scope engagements.',
+  alternates: { canonical: '/pricing' },
   openGraph: {
     title: 'Pricing & engagements · Oivee',
     description:
       'Three engagement models built around the stage you are at. Transparent, senior-led, measurable.',
+    url: '/pricing',
   },
 }
 
 export default function PricingPage() {
   return (
     <>
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Pricing', path: '/pricing' },
+          ])
+        )}
+      />
+      <script {...jsonLdScriptProps(faqSchema())} />
       {/* Hero */}
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <div className="max-w-3xl">

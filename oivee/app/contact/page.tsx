@@ -2,20 +2,31 @@ import type { Metadata } from 'next'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import LeadForm from '@/components/ui/LeadForm'
 import { SITE } from '@/lib/content'
+import { breadcrumbSchema, jsonLdScriptProps } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Book a strategy call',
+  title: 'Contact Oivee — Book a Strategy Call',
   description:
-    'Book a strategy call with Oivee. Tell us what you\'re trying to grow — we\'ll come back within a business day with a clear read on whether we can help.',
+    'Talk to Oivee about your brand, paid ads, SEO, or website. One business-day response from a senior strategist — no pitch decks, no sales reps.',
+  alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Book a strategy call · Oivee',
     description: 'Book a strategy call. One business-day response, no pitch decks.',
+    url: '/contact',
   },
 }
 
 export default function ContactPage() {
   return (
     <>
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Contact', path: '/contact' },
+          ])
+        )}
+      />
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           {/* Left — info */}

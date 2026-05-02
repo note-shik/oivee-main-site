@@ -5,20 +5,37 @@ import { CASE_STUDIES } from '@/lib/content'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import {
+  breadcrumbSchema,
+  caseStudiesItemListSchema,
+  caseStudyAlt,
+  jsonLdScriptProps,
+} from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Case studies',
+  title: 'Case Studies — Real ROAS, Real Pipeline | Oivee',
   description:
-    'Real brands, real numbers. A selection of engagements where Oivee moved the metric that actually mattered.',
+    'Selected Oivee engagements with audited results — 312% lead increase, 5.2x ROAS, 50K+ community growth. Digital marketing case studies from India.',
+  alternates: { canonical: '/case-studies' },
   openGraph: {
     title: 'Case studies · Oivee',
     description: 'Real brands. Real numbers. Selected Oivee engagements.',
+    url: '/case-studies',
   },
 }
 
 export default function CaseStudiesPage() {
   return (
     <>
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Case Studies', path: '/case-studies' },
+          ])
+        )}
+      />
+      <script {...jsonLdScriptProps(caseStudiesItemListSchema())} />
       {/* Hero */}
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <div className="max-w-3xl">
@@ -50,7 +67,7 @@ export default function CaseStudiesPage() {
                 <div className="relative aspect-[4/3] md:aspect-auto">
                   <Image
                     src={cs.image}
-                    alt={cs.client}
+                    alt={caseStudyAlt(cs)}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"

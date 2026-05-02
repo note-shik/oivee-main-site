@@ -4,20 +4,36 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
 import ServiceCard from '@/components/services/ServiceCard'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import {
+  breadcrumbSchema,
+  servicesItemListSchema,
+  jsonLdScriptProps,
+} from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Services',
+  title: 'Services — Brand, Paid Ads, SEO & Web | Oivee',
   description:
-    'Brand, content, paid media, and web — engineered as one growth system. Pick a discipline or run the whole engine with us.',
+    'Full-service digital marketing in India — Meta & Google Ads, SEO, brand identity, social media, reels, and web development. Engineered as one growth system.',
+  alternates: { canonical: '/services' },
   openGraph: {
     title: 'Services · Oivee',
     description: 'Brand, content, paid media, and web — engineered as one growth system.',
+    url: '/services',
   },
 }
 
 export default function ServicesPage() {
   return (
     <>
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+          ])
+        )}
+      />
+      <script {...jsonLdScriptProps(servicesItemListSchema())} />
       {/* Hero */}
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <div className="max-w-3xl">

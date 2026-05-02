@@ -4,20 +4,31 @@ import { WHY_OIVEE } from '@/lib/content'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { breadcrumbSchema, jsonLdScriptProps } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'About Oivee — Digital Growth Studio in India',
   description:
-    'Oivee is a digital growth studio built by operators, for founders. Strategy, creative, and media under one roof — accountable to revenue, not vanity metrics.',
+    'Oivee is a Kolkata-based digital marketing agency built by operators, for founders. Strategy, creative, and media under one roof — accountable to revenue.',
+  alternates: { canonical: '/about' },
   openGraph: {
     title: 'About · Oivee',
     description: 'A digital growth studio built by operators, for founders.',
+    url: '/about',
   },
 }
 
 export default function AboutPage() {
   return (
     <>
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'About', path: '/about' },
+          ])
+        )}
+      />
       {/* Hero */}
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <ScrollReveal>

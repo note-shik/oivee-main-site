@@ -3,10 +3,24 @@ export const SITE = {
   tagline: 'Where brand meets performance.',
   description:
     'A digital growth studio building brand, content, and ad systems for founders who want compounding results — not another vendor. Strategy, design, and paid media under one roof.',
+  // SEO-optimised meta strings — keyword-led, not brand-led. Used in <title>/<meta description>.
+  seoTitle: 'Digital Marketing Agency in India — Brand, Paid Ads & SEO | Oivee',
+  seoDescription:
+    'Oivee is a full-service digital marketing agency in India delivering brand, Meta & Google Ads, content, web, and SEO under one roof. Book a strategy call.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://oivee.com',
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919064982248',
   phone: process.env.NEXT_PUBLIC_PHONE_DISPLAY || '+91 90649 82248',
+  phoneE164: process.env.NEXT_PUBLIC_PHONE_E164 || '+919064982248',
   email: process.env.NEXT_PUBLIC_EMAIL || 'support@oivee.com',
+  address: {
+    locality: 'Kolkata',
+    region: 'WB',
+    country: 'IN',
+  },
+  social: {
+    instagram: 'https://www.instagram.com/oivee.in',
+    linkedin: 'https://www.linkedin.com/company/oivee',
+  },
 } as const
 
 export const NAV_LINKS = [

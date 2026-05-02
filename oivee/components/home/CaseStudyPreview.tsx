@@ -4,6 +4,7 @@ import { CASE_STUDIES } from '@/lib/content'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { caseStudyAlt } from '@/lib/seo'
 
 export default function CaseStudyPreview() {
   const featured = CASE_STUDIES.slice(0, 2)
@@ -37,7 +38,7 @@ export default function CaseStudyPreview() {
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src={cs.image}
-                  alt={cs.client}
+                  alt={caseStudyAlt(cs)}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"

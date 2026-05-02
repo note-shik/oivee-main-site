@@ -6,6 +6,12 @@ import { CASE_STUDIES } from '@/lib/content'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import SectionCTA from '@/components/ui/SectionCTA'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import {
+  breadcrumbSchema,
+  caseStudySchema,
+  caseStudyAlt,
+  jsonLdScriptProps,
+} from '@/lib/seo'
 
 type Params = { slug: string }
 
@@ -17,11 +23,13 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const cs = CASE_STUDIES.find((c) => c.slug === params.slug)
   if (!cs) return { title: 'Case study not found' }
   return {
-    title: `${cs.title} — ${cs.client}`,
+    title: `${cs.title} — ${cs.client} ${cs.industry} Case Study`,
     description: cs.summary,
+    alternates: { canonical: `/case-studies/${cs.slug}` },
     openGraph: {
       title: `${cs.title} · Oivee`,
       description: cs.summary,
+      url: `/case-studies/${cs.slug}`,
       images: [{ url: cs.image }],
     },
   }
@@ -36,6 +44,16 @@ export default function CaseStudyDetailPage({ params }: { params: Params }) {
 
   return (
     <>
+      <script
+        {...jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Case Studies', path: '/case-studies' },
+            { name: cs.client, path: `/case-studies/${cs.slug}` },
+          ])
+        )}
+      />
+      <script {...jsonLdScriptProps(caseStudySchema(cs))} />
       {/* Hero */}
       <SectionWrapper className="pt-32 md:pt-40" grain>
         <div className="max-w-3xl">
@@ -75,7 +93,7 @@ export default function CaseStudyDetailPage({ params }: { params: Params }) {
         <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-brand-border">
           <Image
             src={cs.image}
-            alt={cs.client}
+            alt={caseStudyAlt(cs)}
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 1024px"
@@ -174,7 +192,7 @@ export default function CaseStudyDetailPage({ params }: { params: Params }) {
               <div className="relative aspect-[4/3] md:aspect-auto">
                 <Image
                   src={next.image}
-                  alt={next.client}
+                  alt={caseStudyAlt(next)}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"

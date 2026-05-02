@@ -5,6 +5,12 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import { SITE } from '@/lib/content'
+import {
+  organizationSchema,
+  professionalServiceSchema,
+  websiteSchema,
+  jsonLdScriptProps,
+} from '@/lib/seo'
 import Script from "next/script";
 
 const dmSans = DM_Sans({
@@ -17,10 +23,22 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
+    default: SITE.seoTitle,
     template: `%s · ${SITE.name}`,
   },
-  description: SITE.description,
+  description: SITE.seoDescription,
+  keywords: [
+    'digital marketing agency India',
+    'digital marketing agency Kolkata',
+    'Meta ads agency India',
+    'Google Ads agency India',
+    'SEO agency India',
+    'brand identity agency India',
+    'social media management India',
+    'website development India',
+    'performance marketing agency',
+    'D2C marketing agency India',
+  ],
   alternates: {
     canonical: '/',
   },
@@ -71,8 +89,10 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={dmSans.variable}>
-      
       <body className="font-body">
+        <script {...jsonLdScriptProps(organizationSchema())} />
+        <script {...jsonLdScriptProps(professionalServiceSchema())} />
+        <script {...jsonLdScriptProps(websiteSchema())} />
         {gaId && (
   <>
     <Script
